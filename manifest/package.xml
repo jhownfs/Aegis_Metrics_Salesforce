@@ -68,7 +68,7 @@
 		<members>Event_Monitoring_Type.Time_Based_Workflow</members>
 		<members>Event_Monitoring_Type.Transaction_Security</members>
 		<members>Event_Monitoring_Type.UI_Telemetry_Navigation_Timing</members>
-		<members>Event_Monitoring_Type.UI_Telemetry_Resource_Timing_Event</members>
+		<members>Event_Monitoring_Type.UI_Telemetry_Resource_Timing</members>
 		<members>Event_Monitoring_Type.URI</members>
 		<members>Event_Monitoring_Type.Visualforce_Request</members>
 		<members>Event_Monitoring_Type.Wave_Change</members>
