@@ -5,6 +5,18 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-string tempvar = 'Enter_your_name_here';
-System.debug('Hello World!');
-System.debug('My name is ' + tempvar);
+list<Event_Monitoring_Type__mdt> eventMonitoringTypes = EventMonitoringTypesSelector.getEnabledToIngestEventMonitoring();
+system.debug('eventMonitoringTypes: ' + eventMonitoringTypes);
+
+list<String> eventMonitoringTypeLabels = new List<String>();
+
+for( Event_Monitoring_Type__mdt eventMonitoringType : eventMonitoringTypes ) {
+    eventMonitoringTypeLabels.add(eventMonitoringType.MasterLabel.deleteWhitespace());
+}
+system.debug('eventMonitoringTypeLabels: ' + eventMonitoringTypeLabels);
+
+ // Get the event log files for the enabled event monitoring types
+list<Eventlogfile> eventLogFiles = EventLogFileSelector.getEventLogFiles(eventMonitoringTypeLabels);
+system.debug('eventLogFiles: ' + eventLogFiles);
+system.debug('BLOB: ' + EncodingUtil.base64Encode(eventLogFiles[0].LogFile));        
+System.enqueueJob(new AegistMetricsQueuebleSlave(eventLogFiles[0]));

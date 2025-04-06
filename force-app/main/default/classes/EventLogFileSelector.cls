@@ -4,6 +4,9 @@ public with sharing class EventLogFileSelector {
         return [SELECT Id, LogFile, LogFileFieldNames, EventType
                 FROM Eventlogfile 
                 WHERE EventType IN : eventMonitoringTypeNames 
-                WITH SECURITY_ENFORCED];
+                //AND logDate = LAST_N_DAYS:1
+                AND Interval = 'Daily'
+                WITH SECURITY_ENFORCED
+                LIMIT 1];
     }
 }
