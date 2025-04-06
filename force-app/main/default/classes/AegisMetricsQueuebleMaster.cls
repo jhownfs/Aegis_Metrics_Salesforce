@@ -5,6 +5,7 @@ public with sharing class AegisMetricsQueuebleMaster implements Queueable {
         list<Event_Monitoring_Type__mdt> eventMonitoringTypes = EventMonitoringTypesSelector.getEnabledToIngestEventMonitoring();
         
         list<String> eventMonitoringTypeLabels = new List<String>();
+        
         for( Event_Monitoring_Type__mdt eventMonitoringType : eventMonitoringTypes ) {
             eventMonitoringTypeLabels.add(eventMonitoringType.MasterLabel);
         }
