@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>AegisMetricsQueuebleMaster</members>
+		<members>AegisMetricsSch</members>
+		<members>AegisMetricsServices</members>
+		<members>AegistMetricsQueuebleSlave</members>
+		<members>EventLogFileSelector</members>
+		<members>EventMonitoringTypesSelector</members>
+		<members>InsightExternalDataFactory</members>
+		<members>InsightExternalDataPartFactory</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>Leonardo_Phoenix_10_A_futuristic_hi</members>
+		<name>ContentAsset</name>
+	</types>
+	<types>
 		<members>Aegis_Metrics</members>
 		<name>CustomApplication</name>
 	</types>
@@ -76,6 +91,14 @@
 		<members>Event_Monitoring_Type.Wave_Interaction</members>
 		<members>Event_Monitoring_Type.Wave_Performance</members>
 		<name>CustomMetadata</name>
+	</types>
+	<types>
+		<members>Event_Monitoring_Type__mdt</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>Aegis_Metrics_UtilityBar</members>
+		<name>FlexiPage</name>
 	</types>
 	<version>63.0</version>
 </Package>

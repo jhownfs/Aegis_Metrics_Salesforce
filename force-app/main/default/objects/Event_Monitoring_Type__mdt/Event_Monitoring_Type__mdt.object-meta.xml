@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Custom metadata to keep values for event monitoring types</description>
+    <label>Event Monitoring Type</label>
+    <pluralLabel>Event Monitoring Types</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

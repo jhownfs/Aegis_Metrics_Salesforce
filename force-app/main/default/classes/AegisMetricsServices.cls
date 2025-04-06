@@ -1,5 +1,6 @@
 public with sharing class AegisMetricsServices {
  
+
     @AuraEnabled
     public static  list<Event_Monitoring_Type__mdt> getMonitoringTypes(){
 
