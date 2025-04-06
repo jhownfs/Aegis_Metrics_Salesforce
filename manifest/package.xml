@@ -104,5 +104,9 @@
 		<members>Admin</members>
 		<name>Profile</name>
 	</types>
+	<types>
+		<members>AegistMetrics</members>
+		<name>WaveApplication</name>
+	</types>
 	<version>63.0</version>
 </Package>

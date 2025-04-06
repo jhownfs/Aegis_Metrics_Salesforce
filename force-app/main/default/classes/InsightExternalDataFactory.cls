@@ -7,6 +7,7 @@ public with sharing class InsightExternalDataFactory {
         insightExternalData.EdgemartAlias = EdgemartAlias;
         insightExternalData.Format = 'Csv';
         insightExternalData.Operation = 'Overwrite';
+        insightExternalData.EdgemartContainer = 'AegisMetrics';
         
         return insightExternalData;
     }

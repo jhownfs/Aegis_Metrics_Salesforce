@@ -17,6 +17,5 @@ system.debug('eventMonitoringTypeLabels: ' + eventMonitoringTypeLabels);
 
  // Get the event log files for the enabled event monitoring types
 list<Eventlogfile> eventLogFiles = EventLogFileSelector.getEventLogFiles(eventMonitoringTypeLabels);
-system.debug('eventLogFiles: ' + eventLogFiles);
-system.debug('BLOB: ' + EncodingUtil.base64Encode(eventLogFiles[0].LogFile));        
+   
 System.enqueueJob(new AegistMetricsQueuebleSlave(eventLogFiles[0]));
