@@ -7,7 +7,12 @@ public with sharing class EventMonitoringTypesSelector {
                ORDER BY MasterLabel];
     }
 
-    public static string getEnabledToIngestEventMonitoring() {
-        return 'SELECT MasterLabel,  Enabled_To_Ingest__c FROM Event_Monitoring_Type__mdt  WHERE Enabled_To_Ingest__c = true AND Default_Event__c = false WITH SECURITY_ENFORCED ORDER BY MasterLabel';
+    public static list<Event_Monitoring_Type__mdt> getEnabledToIngestEventMonitoring() {
+        return [SELECT MasterLabel,  Enabled_To_Ingest__c 
+                FROM Event_Monitoring_Type__mdt
+                WHERE Enabled_To_Ingest__c = true 
+                AND Default_Event__c = false
+                WITH SECURITY_ENFORCED
+                ORDER BY MasterLabel];
     }
 }
