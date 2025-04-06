@@ -93,8 +93,13 @@
 		<name>CustomMetadata</name>
 	</types>
 	<types>
+		<members>AegisMetricsObjectMonitor__c</members>
 		<members>Event_Monitoring_Type__mdt</members>
 		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>AegisMetricsObjectMonitor__c</members>
+		<name>CustomTab</name>
 	</types>
 	<types>
 		<members>Aegis_Metrics_UtilityBar</members>
@@ -105,7 +110,7 @@
 		<name>Profile</name>
 	</types>
 	<types>
-		<members>AegistMetrics</members>
+		<members>AegisMetrics</members>
 		<name>WaveApplication</name>
 	</types>
 	<version>63.0</version>
