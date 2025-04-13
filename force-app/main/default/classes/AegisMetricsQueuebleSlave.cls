@@ -9,7 +9,8 @@ public with sharing class AegisMetricsQueuebleSlave implements Queueable {
 
     public void execute(QueueableContext context) {
        
-        try {
+        try { 
+              
 
               InsightsExternalData insightExternalData = InsightExternalDataFactory.createInsightExternalData(this.eventLogFile.EventType);
 
