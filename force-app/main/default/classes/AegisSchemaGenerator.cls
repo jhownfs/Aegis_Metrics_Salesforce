@@ -55,19 +55,16 @@ public with sharing class AegisSchemaGenerator {
         field.fullyQualifiedName = name;
         field.type = type;
         field.label = name;
-        if(type == 'Number') {
+        if(type == 'Numeric') {
           field.precision = 18;
           field.scale = 3;
           field.defaultValue = '0';
           field.format = '0.000';
           field.decimalSeparator = '.';
-        } else if(type == 'Date') {
+        } else if(type == 'Date' || type == 'Datetime') {
           field.format ='yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'';
-        } else if(type == 'Datetime') {
-          field.format = 'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'';
         }
-        
+           
         return field;
     }
-
 }
