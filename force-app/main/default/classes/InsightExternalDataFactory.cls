@@ -1,6 +1,6 @@
 public with sharing class InsightExternalDataFactory {
   
-    public static InsightsExternalData createInsightExternalData(String EdgemartAlias) {
+    public static InsightsExternalData createInsightExternalData(String EdgemartAlias, Blob MetadataJson) {
 
         InsightsExternalData  insightExternalData = new InsightsExternalData();
         
@@ -8,6 +8,8 @@ public with sharing class InsightExternalDataFactory {
         insightExternalData.Format = 'Csv';
         insightExternalData.Operation = 'Append';
         insightExternalData.EdgemartContainer = 'AegisMetrics';
+        insightExternalData.MetadataJson = MetadataJson;
+        insightExternalData.Mode = 'Incremental';
         
         return insightExternalData;
     }

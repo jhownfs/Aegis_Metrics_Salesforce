@@ -11,8 +11,23 @@ public with sharing class AegisMetricsQueuebleSlave implements Queueable {
        
         try { 
               
+              // Add the event log file to the map
+              List<String> fieldNames = this.eventLogFile.LogFileFieldNames.split(',');
+              List<String> fieldTypes = this.eventLogFile.LogFileFieldTypes.split(',');
 
-              InsightsExternalData insightExternalData = InsightExternalDataFactory.createInsightExternalData(this.eventLogFile.EventType);
+              map<String,String> eventLogFileJson = new map<String,String>();
+
+              for(Integer i = 0; i < fieldNames.size(); i++) {
+
+                eventLogFileJson.put(fieldNames[i], fieldTypes[i]);
+
+              }
+
+              AegisSchemaGenerator schemaGenerator = new AegisSchemaGenerator(eventLogFileJson, this.eventLogFile.EventType);
+
+              /*Blob schemaBlob = Blob.valueof(schemaGenerator.generetaSchemaEventlog());
+
+              InsightsExternalData insightExternalData = InsightExternalDataFactory.createInsightExternalData(this.eventLogFile.EventType, schemaBlob);
 
               Database.insert(insightExternalData);
 
@@ -24,7 +39,7 @@ public with sharing class AegisMetricsQueuebleSlave implements Queueable {
 
               insightExternalData.Action = 'Process';
                 
-              Database.update(insightExternalData);
+              Database.update(insightExternalData);*/
             
         } catch (Exception ex) {
             System.debug(ex.getMessage());
