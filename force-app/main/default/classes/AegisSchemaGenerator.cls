@@ -6,7 +6,7 @@ public with sharing class AegisSchemaGenerator {
         'String' => 'Text',
         'Number' => 'Numeric',
         'Date' => 'Date',
-        'Datetime' => 'Date',
+        'DateTime' => 'Date',
         'Id' => 'Text'
     };
 
