@@ -18,7 +18,7 @@ system.debug('eventMonitoringTypeLabels: ' + eventMonitoringTypeLabels);
  // Get the event log files for the enabled event monitoring types
 list<Eventlogfile> eventLogFiles = EventLogFileSelector.getEventLogFiles(eventMonitoringTypeLabels);
    
-map<String,String> eventLogFileMap = new map<String,String>();
+/*map<String,String> eventLogFileMap = new map<String,String>();
 
 for( Eventlogfile eventLogFile : eventLogFiles ) {
     // Add the event log file to the map
@@ -36,6 +36,10 @@ for( Eventlogfile eventLogFile : eventLogFiles ) {
 AegisSchemaGenerator schemaGenerator = new AegisSchemaGenerator(eventLogFileMap , 'DatabaseSave');
 
 // Generate the schema for the event log file
-schemaGenerator.generetaSchemaEventlog();
+String formatgenerated = schemaGenerator.generetaSchemaEventlog();
 
-//System.enqueueJob(new AegistMetricsQueuebleSlave(eventLogFiles[0]));
+System.debug('eventLogFiles: ' + formatgenerated);
+
+System.debug('schemaGenerator: ' + blob.valueOf(formatgenerated));*/
+
+System.enqueueJob(new AegisMetricsQueuebleSlave(eventLogFiles[0]));

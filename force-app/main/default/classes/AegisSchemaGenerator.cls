@@ -2,6 +2,13 @@ public with sharing class AegisSchemaGenerator {
 
     private map<String,String> fieldsLogFile;
     private String logName = 'AegisMetrics';
+    private map<String, String> fieldsTypes = new map<String, String>{
+        'String' => 'Text',
+        'Number' => 'Numeric',
+        'Date' => 'Date',
+        'Datetime' => 'Date',
+        'Id' => 'Text'
+    };
 
     public AegisSchemaGenerator(map<String,String> fieldsLogFile, String logName) {
         
@@ -9,7 +16,7 @@ public with sharing class AegisSchemaGenerator {
         this.logName = logName;
     }
 
-    public void generetaSchemaEventlog(){
+    public String generetaSchemaEventlog(){
 
         List<Field> dynamicFields = new List<Field>();
 
@@ -19,7 +26,8 @@ public with sharing class AegisSchemaGenerator {
         }
 
         String schema = generateSchema(this.logName, 'Aegis Metrics', dynamicFields);
-        System.debug('schema = ' + schema);
+
+        return schema;
     }
 
     public class FileFormat {
@@ -76,10 +84,9 @@ public with sharing class AegisSchemaGenerator {
         Field field = new Field();
         field.name = name;
         field.fullyQualifiedName = name;
-        field.type = type;
+        field.type = fieldsTypes.get(type);
         field.label = name;
         if(type == 'Number') {
-          field.type = 'Numeric';  
           field.precision = 18;
           field.scale = 3;
           field.defaultValue = '0';

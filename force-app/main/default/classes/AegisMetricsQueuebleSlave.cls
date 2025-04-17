@@ -25,10 +25,10 @@ public with sharing class AegisMetricsQueuebleSlave implements Queueable {
 
               AegisSchemaGenerator schemaGenerator = new AegisSchemaGenerator(eventLogFileJson, this.eventLogFile.EventType);
 
-              /*Blob schemaBlob = Blob.valueof(schemaGenerator.generetaSchemaEventlog());
+              Blob schemaBlob = Blob.valueOf(schemaGenerator.generetaSchemaEventlog());
 
               InsightsExternalData insightExternalData = InsightExternalDataFactory.createInsightExternalData(this.eventLogFile.EventType, schemaBlob);
-
+              
               Database.insert(insightExternalData);
 
               Blob fileContent = this.eventLogFile.LogFile;
@@ -39,7 +39,7 @@ public with sharing class AegisMetricsQueuebleSlave implements Queueable {
 
               insightExternalData.Action = 'Process';
                 
-              Database.update(insightExternalData);*/
+              Database.update(insightExternalData);
             
         } catch (Exception ex) {
             System.debug(ex.getMessage());
