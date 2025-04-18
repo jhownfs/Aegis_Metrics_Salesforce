@@ -1,18 +1,30 @@
-# Salesforce DX Project: Next Steps
+# Salesforce Aegist Metrics
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Aegis Metrics was created after we identified the need to capture all Salesforce events generated to CRM Analytics, allowing us to build metrics and KPIs and gain deeper insights into user interactions within the Salesforce platform.
 
-## How Do You Plan to Deploy Your Changes?
+## Project Structure
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+The project is organized as follows:
 
-## Configure Your Salesforce DX Project
+- **force-app/main/default/lwc**: Contains Lightning Web Components (LWCs) such as `AegisMetricsSetup`.
+- **scripts**: Contains Apex and SOQL scripts for automation and testing.
+- **config**: Includes project configuration files like `project-scratch-def.json`.
+- **manifest**: Contains the `package.xml` file for metadata deployment.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+## Key Features
 
-## Read All About It
+- **AegisMetricsSetup LWC**: 
+  - Displays and manages monitoring types.
+  - Fetches monitoring types using the Apex method `AegisMetricsServices.getMonitoringTypes`.
+  - Filters monitoring types into `defaultMonitoringTypes` and `enabledMonitoringTypes`.
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+- **Apex Services**:
+  - `AegisMetricsServices`: Provides backend logic for fetching monitoring types.
+
+## Setup Instructions
+
+1. **Install Salesforce CLI**: Follow the [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm).
+2. **Clone the Repository**:
+   ```sh
+   git clone <repository-url>
+   cd <repository-folder>
