@@ -23,17 +23,17 @@ public with sharing class AegisMetricsQueuebleSlave implements Queueable {
 
               }
 
-              AegisSchemaGenerator schemaGenerator = new AegisSchemaGenerator(eventLogFileJson, this.eventLogFile.EventType);
+              AegisMetricsSchemaGenerator schemaGenerator = new AegisMetricsSchemaGenerator(eventLogFileJson, this.eventLogFile.EventType);
 
               Blob schemaBlob = Blob.valueOf(schemaGenerator.generetaSchemaEventlog());
 
-              InsightsExternalData insightExternalData = InsightExternalDataFactory.createInsightExternalData(this.eventLogFile.EventType, schemaBlob);
+              InsightsExternalData insightExternalData = AegisMetricsInsightExternalDataFactory.createInsightExternalData(this.eventLogFile.EventType, schemaBlob);
               
               Database.insert(insightExternalData);
 
               Blob fileContent = this.eventLogFile.LogFile;
 
-              InsightsExternalDataPart insightExternalDataPart = InsightExternalDataPartFactory.createInsightExternalDataPart(fileContent, insightExternalData.Id, 1);
+              InsightsExternalDataPart insightExternalDataPart = AegisMetricsInsightExternalDataPtFactory.createInsightExternalDataPart(fileContent, insightExternalData.Id, 1);
            
               Database.insert(insightExternalDataPart);
 

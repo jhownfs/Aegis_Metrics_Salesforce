@@ -1,4 +1,4 @@
-public with sharing class EventLogFileSelector {
+public with sharing class AegisMetricsEventLogFileSelector {
 
     public static list<Eventlogfile> getEventLogFiles(List<String> eventMonitoringTypeNames) {
         return [SELECT Id, LogFile, LogFileFieldNames, EventType, LogFileFieldTypes 

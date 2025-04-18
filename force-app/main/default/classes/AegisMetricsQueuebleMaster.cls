@@ -2,7 +2,7 @@ public with sharing class AegisMetricsQueuebleMaster implements Queueable {
 
     public void execute(QueueableContext context) {
         
-        list<Event_Monitoring_Type__mdt> eventMonitoringTypes = EventMonitoringTypesSelector.getEnabledToIngestEventMonitoring();
+        list<Event_Monitoring_Type__mdt> eventMonitoringTypes = AegisMetricsEventMonitoringTypesSelector.getEnabledToIngestEventMonitoring();
         
         list<String> eventMonitoringTypeLabels = new List<String>();
         
@@ -11,7 +11,7 @@ public with sharing class AegisMetricsQueuebleMaster implements Queueable {
         }
 
         // Get the event log files for the enabled event monitoring types
-        list<Eventlogfile> eventLogFiles = EventLogFileSelector.getEventLogFiles(eventMonitoringTypeLabels);
+        list<Eventlogfile> eventLogFiles = AegisMetricsEventLogFileSelector.getEventLogFiles(eventMonitoringTypeLabels);
 
         if(eventLogFiles.isEmpty()) {
             // No event log files to process

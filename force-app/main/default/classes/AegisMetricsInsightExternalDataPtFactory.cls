@@ -1,4 +1,4 @@
-public with sharing class InsightExternalDataPartFactory {
+public with sharing class AegisMetricsInsightExternalDataPtFactory {
     
     public static InsightsExternalDataPart createInsightExternalDataPart(Blob DataFile, String InsightsExternalDataId, Integer PartNumber) {
         

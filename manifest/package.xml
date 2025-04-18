@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>AegisMetricsEventLogFileSelector</members>
+		<members>AegisMetricsEventMonitoringTypesSelector</members>
+		<members>AegisMetricsInsightExternalDataFactory</members>
+		<members>AegisMetricsInsightExternalDataPtFactory</members>
 		<members>AegisMetricsQueuebleMaster</members>
+		<members>AegisMetricsQueuebleSlave</members>
 		<members>AegisMetricsSch</members>
+		<members>AegisMetricsSchemaGenerator</members>
 		<members>AegisMetricsServices</members>
-		<members>AegistMetricsQueuebleSlave</members>
-		<members>EventLogFileSelector</members>
-		<members>EventMonitoringTypesSelector</members>
-		<members>InsightExternalDataFactory</members>
-		<members>InsightExternalDataPartFactory</members>
+		<members>AegisSchemaGenerator</members>
 		<name>ApexClass</name>
 	</types>
 	<types>

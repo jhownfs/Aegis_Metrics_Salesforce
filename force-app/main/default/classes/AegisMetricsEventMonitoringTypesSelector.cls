@@ -1,4 +1,4 @@
-public with sharing class EventMonitoringTypesSelector {
+public with sharing class AegisMetricsEventMonitoringTypesSelector {
     
     public static list<Event_Monitoring_Type__mdt> getAllEventMonitoringTypes() {
        return [SELECT MasterLabel, Enabled_To_Admin__c, Enabled_To_Ingest__c 

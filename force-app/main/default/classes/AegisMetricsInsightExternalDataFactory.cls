@@ -1,4 +1,4 @@
-public with sharing class InsightExternalDataFactory {
+public with sharing class AegisMetricsInsightExternalDataFactory {
   
     public static InsightsExternalData createInsightExternalData(String EdgemartAlias, Blob MetadataJson) {
 

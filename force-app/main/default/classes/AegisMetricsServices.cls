@@ -8,7 +8,7 @@ public with sharing class AegisMetricsServices {
 
         try {
             
-            eventMonitoringTypes = EventMonitoringTypesSelector.getAllEventMonitoringTypes();
+            eventMonitoringTypes = AegisMetricsEventMonitoringTypesSelector.getAllEventMonitoringTypes();
 
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());

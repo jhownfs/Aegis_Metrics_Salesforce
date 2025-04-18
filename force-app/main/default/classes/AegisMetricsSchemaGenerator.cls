@@ -1,4 +1,4 @@
-public with sharing class AegisSchemaGenerator {
+public with sharing class AegisMetricsSchemaGenerator {
 
     private map<String,String> fieldsLogFile;
     private String logName = 'AegisMetrics';
@@ -10,7 +10,7 @@ public with sharing class AegisSchemaGenerator {
         'Id' => 'Text'
     };
 
-    public AegisSchemaGenerator(map<String,String> fieldsLogFile, String logName) {
+    public AegisMetricsSchemaGenerator(map<String,String> fieldsLogFile, String logName) {
         
         this.fieldsLogFile = fieldsLogFile;
         this.logName = logName;
