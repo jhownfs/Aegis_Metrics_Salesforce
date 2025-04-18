@@ -1,11 +1,12 @@
 import { LightningElement } from 'lwc';
 import setupEvent from '@salesforce/label/c.Aegis_Metrics_Setup_Events';
 import defaultEvent from '@salesforce/label/c.Aegist_Metrics_Default_Events';
-import GetMonitoringTypes from '@salesforce/apex/AegisMetricsServices.getMonitoringTypes';
+import getMonitoringTypes from '@salesforce/apex/AegisMetricsServices.getMonitoringTypes';
 
-export default class AegisMetricsSetup extends LightningElement {
+export default class aegisMetricsSetup extends LightningElement {
  
-  monitoringTypes;
+  enabledMonitoringTypes;
+  defaultMonitoringTypes;
 
   label = {
     setupEvent,
@@ -14,8 +15,9 @@ export default class AegisMetricsSetup extends LightningElement {
 
   async connectedCallback() {
     try {
-      //this.monitoringTypes = await GetMonitoringTypes();
-      //console.log('Monitoring Types:', this.monitoringTypes);
+      let MonitoringTypes = await getMonitoringTypes();
+      this.defaultMonitoringTypes = MonitoringTypes.filter(type => type.Default_Event__c === true);
+      this.enabledMonitoringTypes = MonitoringTypes.filter(type => type.Enabled_To_Admin__c === true);
     } catch (error) {
       console.error('Error fetching monitoring types:', error);
     }
