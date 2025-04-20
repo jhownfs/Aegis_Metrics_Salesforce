@@ -5,6 +5,9 @@ import toggleActive from '@salesforce/label/c.Aegis_Metrics_Toggle_Active';
 import toggerInative from '@salesforce/label/c.Aegis_Metrics_Toggle_Inative';
 import getMonitoringTypes from '@salesforce/apex/AegisMetricsServices.getMonitoringTypes';
 import updateMonitoringTypes from '@salesforce/apex/AegisMetricsServices.updateEventTypes';
+import successMessage from '@salesforce/label/c.Aegis_Metrics_Toast_Success_Message';
+import errorMessage from '@salesforce/label/c.Aegis_Metrics_Toast_Error_Message';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class aegisMetricsSetup extends LightningElement {
  
@@ -40,23 +43,27 @@ export default class aegisMetricsSetup extends LightningElement {
     };
 
     this.handleSave(Event_Monitoring_Type__mdt);
-    // Update the local state   
-    // Call Apex method to update the monitoring type status
-    // You can implement the logic to call the Apex method here
-    console.log(`Monitoring Type ID: ${monitoringTypeId}, Enabled: ${isEnabled}`);
+
   }
 
   async handleSave(eventType) {
 
    const eventTypeJson = JSON.stringify(eventType);
-   console.log('Event Type JSON:', eventTypeJson);
    const eventUpdate = await updateMonitoringTypes({ jsonData: eventTypeJson });
 
     if (eventUpdate) {
-        console.log('Event updated successfully:', eventUpdate);
+        this.showMessageToUser('Success', successMessage, 'success');
       } else {
-        console.error('Error updating event:', eventType);
+        this.showMessageToUser('Error', errorMessage, 'error');
       }
   }
 
+  async showMessageToUser(title, message, variant) {
+    const event = new ShowToastEvent({
+      title: title,
+      message: message,
+      variant: variant,
+    });
+    this.dispatchEvent(event);
+  }
 }
