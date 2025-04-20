@@ -16,4 +16,19 @@ public with sharing class AegisMetricsServices {
 
         return eventMonitoringTypes;
     }
+
+    @AuraEnabled
+    public static Boolean updateEventTypes(List<Event_Monitoring_Type__mdt> eventMonitoringTypes){
+
+        List<Eventlogfile> eventLogFiles = new List<Eventlogfile>();
+        Boolean isSuccess = false;
+        try {
+
+
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+
+        return isSuccess;
+    }
 }

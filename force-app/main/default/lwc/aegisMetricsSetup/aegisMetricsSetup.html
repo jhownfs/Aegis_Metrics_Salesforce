@@ -3,22 +3,36 @@
       <lightning-tabset  variant="scoped" active-tab-value="one">
         <lightning-tab label={label.setupEvent} value="one">
            <div class="slds-var-m-around_medium">
+            <div class="slds-grid slds-wrap">
              <template for:each={enabledMonitoringTypes} for:item="enabledMonitoringType">
-               <div key={enabledMonitoringType.Id}>
-                 <lightning-input type="checkbox" label={enabledMonitoringType.MasterLabel} value={enabledMonitoringType.Id} name="enabledMonitoringType">
+               <div key={enabledMonitoringType.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-around_x-small">
+                 <lightning-input 
+                  type="checkbox" 
+                  label={enabledMonitoringType.MasterLabel}
+                  value={enabledMonitoringType.Id} 
+                  name="enabledMonitoringType">
                  </lightning-input>
                </div>
              </template> 
+            </div>
            </div>
         </lightning-tab>
         <lightning-tab label={label.defaultEvent} value="two">
           <div class="slds-var-m-around_medium">
+            <div class="slds-grid slds-wrap">
             <template for:each={defaultMonitoringTypes} for:item="defaultMonitoringType">
-              <div key={defaultMonitoringType.Id}>
-                <lightning-input type="checkbox" label={defaultMonitoringType.MasterLabel} value={defaultMonitoringType.Id} name="defaultMonitoringType" checked disabled>
+              <div key={defaultMonitoringType.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-around_x-small">
+                <lightning-input 
+                 type="checkbox" 
+                 label={defaultMonitoringType.MasterLabel}
+                 value={defaultMonitoringType.Id} 
+                 name="defaultMonitoringType"
+                 checked 
+                 disabled>
                 </lightning-input>
               </div>
             </template> 
+            </div>
           </div>
         </lightning-tab>
     </lightning-tabset>
