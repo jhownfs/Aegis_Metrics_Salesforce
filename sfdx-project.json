@@ -5,8 +5,8 @@
       "default": true
     }
   ],
-  "name": "Event Monitoring",
-  "namespace": "",
+  "name": "Aegis Metrics",
+  "namespace": "Aegis Metrics",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "63.0"
 }

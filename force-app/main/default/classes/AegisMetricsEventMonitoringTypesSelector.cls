@@ -15,4 +15,13 @@ public with sharing class AegisMetricsEventMonitoringTypesSelector {
                 WITH SECURITY_ENFORCED
                 ORDER BY MasterLabel];
     }
+
+    public static list<Event_Monitoring_Type__mdt> getEventMonitoringTypeById( Id eventMonitoringTypeId) {
+        return [SELECT MasterLabel,  Enabled_To_Ingest__c, DeveloperName
+                FROM Event_Monitoring_Type__mdt
+                WHERE Default_Event__c = false
+                AND Id =: eventMonitoringTypeId
+                WITH SECURITY_ENFORCED
+                ];
+    }
 }
