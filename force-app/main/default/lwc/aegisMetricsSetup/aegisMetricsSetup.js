@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, track } from 'lwc';
 import setupEvent from '@salesforce/label/c.Aegis_Metrics_Setup_Events';
 import defaultEvent from '@salesforce/label/c.Aegist_Metrics_Default_Events';
 import toggleActive from '@salesforce/label/c.Aegis_Metrics_Toggle_Active';
@@ -13,6 +13,7 @@ export default class aegisMetricsSetup extends LightningElement {
  
   enabledMonitoringTypes;
   defaultMonitoringTypes;
+  hasRendered = false;
 
   label = {
     setupEvent,
@@ -27,22 +28,40 @@ export default class aegisMetricsSetup extends LightningElement {
       this.defaultMonitoringTypes = MonitoringTypes.filter(type => type.Default_Event__c === true);
       this.enabledMonitoringTypes = MonitoringTypes.filter(type => type.Enabled_To_Admin__c === true);
     } catch (error) {
-      console.error('Error fetching monitoring types:', error);
+      this.showMessageToUser('Error', 'Error fetching monitoring types. Please try again', 'error');
     }
   }
 
+  renderedCallback() { 
+
+    if (this.hasRendered) {
+      return;
+    }
+    
+    this.hasRendered = true;
+    console.log('Rendered Callback');
+    this.template.querySelectorAll('[data-element="allow-monitoring"]').forEach((checkbox) => {
+      const monitoringTypeId = checkbox.value;
+      const isEnabled = this.enabledMonitoringTypes.some(type => type.Id === monitoringTypeId);
+      console.log(`Monitoring Type ID: ${monitoringTypeId}, Is Enabled: ${isEnabled}`);
+      checkbox.checked = isEnabled;
+    });
+    console.log('Checkboxes initialized');
+
+  }
+    
   handleToggle(event) {
     event.stopPropagation();
     event.preventDefault();
     const monitoringTypeId = event.target.value;
     const isEnabled = event.target.checked;
 
-    const Event_Monitoring_Type__mdt = {
+   /* const Event_Monitoring_Type__mdt = {
       Id: monitoringTypeId,
       Enabled_To_Ingest__c: isEnabled
-    };
+    };*/
 
-    this.handleSave(Event_Monitoring_Type__mdt);
+    //this.handleSave(Event_Monitoring_Type__mdt);
 
   }
 
@@ -66,4 +85,6 @@ export default class aegisMetricsSetup extends LightningElement {
     });
     this.dispatchEvent(event);
   }
+
+
 }

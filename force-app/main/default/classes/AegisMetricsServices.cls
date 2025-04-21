@@ -1,5 +1,6 @@
 public with sharing class AegisMetricsServices {
  
+    private static final String CRONJOBNAME = 'AegisMetricsUploadEventLogFiles';
 
     @AuraEnabled
     public static  list<Event_Monitoring_Type__mdt> getMonitoringTypes(){
@@ -21,8 +22,6 @@ public with sharing class AegisMetricsServices {
     public static Boolean updateEventTypes(String jsonData) {
 
         Boolean isSuccess = false;
-
-        System.debug('jsonData: ' + jsonData);
 
         Event_Monitoring_Type__mdt eventTypes = (Event_Monitoring_Type__mdt) JSON.deserialize(jsonData, Event_Monitoring_Type__mdt.class);
 
@@ -51,5 +50,40 @@ public with sharing class AegisMetricsServices {
         }
 
         return isSuccess;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static String getNextExecutionTime() {
+        List<CronTrigger> cron = [
+            SELECT NextFireTime 
+            FROM CronTrigger 
+            WHERE CronJobDetail.Name =: CRONJOBNAME
+            ORDER BY NextFireTime ASC 
+            LIMIT 1
+        ];
+
+        if (cron.isEmpty()) {
+            return 'No scheduled job found.';
+        }
+
+        return String.valueOf(cron[0].NextFireTime);
+    }
+
+    @AuraEnabled
+    public static void scheduleJob() {
+        String cronExp = '0 0 8 * * ?'; // A cada hora cheia
+        System.schedule(CRONJOBNAME, cronExp, new AegisMetricsSch());
+    }
+
+    @AuraEnabled
+    public static void deleteJob() {
+        List<CronTrigger> jobs = [
+            SELECT Id 
+            FROM CronTrigger 
+            WHERE CronJobDetail.Name =: CRONJOBNAME
+        ];
+        for (CronTrigger job : jobs) {
+            System.abortJob(job.Id);
+        }
     }
 }

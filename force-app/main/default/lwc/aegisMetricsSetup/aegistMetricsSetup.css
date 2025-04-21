@@ -5,3 +5,47 @@
   justify-content: center;
   min-height: 100vh;
 }
+
+.legend-element {
+  position: relative;
+}
+
+.legend-element .legend-label {
+  position: absolute;
+  top: -0.75rem;
+  left: 1rem;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+
+.custom-box {
+  padding: 1rem;
+  border: 1px solid var(--lwc-colorBorder, #d8dde6);
+  border-radius: 0.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.legend-header {
+  position: absolute;
+  top: -0.75rem;
+  left: 1rem;
+  font-weight: bold;
+  font-size: 0.75rem;
+  background: var(--lwc-colorBackground, white);
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.custom-box.active {
+  border-color: #2ecc71;
+  background-color: #f0fff5;
+  box-shadow: 0 0 0 2px #2ecc71 inset;
+}
+
+.custom-box.inactive {
+  background-color: var(--lwc-colorBackgroundAlt, white);
+  border-color: var(--lwc-colorBorder, #d8dde6);
+}

@@ -1,0 +1,63 @@
+<template>
+  <div class="scheduler-box slds-box slds-theme_default slds-p-around_large slds-m-around_medium">
+    
+    <!-- Header -->
+    <div class="slds-text-align_center slds-m-bottom_large">
+      <h1 class="slds-text-heading_large slds-theme_shade slds-p-around_small">Agendamento de Classe</h1>
+    </div>
+
+    <!-- Botões -->
+    <div class="slds-grid slds-grid_align-center slds-m-bottom_large slds-gutters_medium">
+      <lightning-button 
+        label="Agendar Execução"
+        variant="brand"
+        onclick={handleSchedule}>
+      </lightning-button>
+
+      <lightning-button 
+        label="Cancelar Agendamento"
+        variant="destructive"
+        onclick={openModal}>
+      </lightning-button>
+    </div>
+
+    <!-- Separador -->
+    <div class="slds-border_top slds-m-bottom_medium"></div>
+
+    <!-- Rodapé -->
+    <template if:true={nextExecution}>
+      <div class="slds-text-align_center slds-text-body_regular">
+        <strong>Próxima execução:</strong> {nextExecution}
+      </div>
+    </template>
+
+    <!-- Modal -->
+    <template if:true={showModal}>
+      <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <!-- Modal Header -->
+          <header class="slds-modal__header slds-theme_warning">
+            <h2 class="slds-modal__title slds-hyphenate">Confirmar cancelamento</h2>
+          </header>
+
+          <!-- Modal Body -->
+          <div class="slds-modal__content slds-p-around_medium">
+            Tem certeza que deseja cancelar o agendamento da classe?
+          </div>
+
+          <!-- Modal Footer -->
+          <footer class="slds-modal__footer">
+            <lightning-button variant="neutral" label="Cancelar" onclick={closeModal}></lightning-button>
+            <lightning-button variant="destructive" label="Confirmar" onclick={handleDelete}></lightning-button>
+          </footer>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- Erro (caso não queira usar toast como fallback) -->
+    <template if:true={error}>
+      <div class="slds-text-color_error slds-text-align_center">{error}</div>
+    </template>
+  </div>
+</template>
