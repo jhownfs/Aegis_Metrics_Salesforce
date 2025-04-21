@@ -63,7 +63,7 @@ public with sharing class AegisMetricsServices {
         ];
 
         if (cron.isEmpty()) {
-            return 'No scheduled job found.';
+            return null;  
         }
 
         return String.valueOf(cron[0].NextFireTime);

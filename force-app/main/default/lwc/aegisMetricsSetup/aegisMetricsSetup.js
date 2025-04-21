@@ -1,26 +1,17 @@
 import { LightningElement, track } from 'lwc';
-import setupEvent from '@salesforce/label/c.Aegis_Metrics_Setup_Events';
-import defaultEvent from '@salesforce/label/c.Aegist_Metrics_Default_Events';
-import toggleActive from '@salesforce/label/c.Aegis_Metrics_Toggle_Active';
-import toggerInative from '@salesforce/label/c.Aegis_Metrics_Toggle_Inative';
 import getMonitoringTypes from '@salesforce/apex/AegisMetricsServices.getMonitoringTypes';
 import updateMonitoringTypes from '@salesforce/apex/AegisMetricsServices.updateEventTypes';
 import successMessage from '@salesforce/label/c.Aegis_Metrics_Toast_Success_Message';
 import errorMessage from '@salesforce/label/c.Aegis_Metrics_Toast_Error_Message';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { label  } from 'c/aegisLabelUtility';
 
 export default class aegisMetricsSetup extends LightningElement {
  
   enabledMonitoringTypes;
   defaultMonitoringTypes;
   hasRendered = false;
-
-  label = {
-    setupEvent,
-    defaultEvent,
-    toggleActive,
-    toggerInative
-  };
+  @track label=label;
 
   async connectedCallback() {
     try {

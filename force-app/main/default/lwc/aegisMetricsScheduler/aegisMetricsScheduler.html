@@ -3,22 +3,25 @@
     
     <!-- Header -->
     <div class="slds-text-align_center slds-m-bottom_large">
-      <h1 class="slds-text-heading_large slds-theme_shade slds-p-around_small">Agendamento de Classe</h1>
+      <h1 class="slds-text-heading_large slds-theme_shade slds-p-around_small">{label.schedulerHeader}</h1>
     </div>
 
     <!-- Botões -->
-    <div class="slds-grid slds-grid_align-center slds-m-bottom_large slds-gutters_medium">
-      <lightning-button 
-        label="Agendar Execução"
-        variant="brand"
-        onclick={handleSchedule}>
-      </lightning-button>
-
-      <lightning-button 
-        label="Cancelar Agendamento"
-        variant="destructive"
-        onclick={openModal}>
-      </lightning-button>
+    <div class="slds-grid slds-grid_align-center slds-m-bottom_large slds-gutters_medium slds-gutters_small">
+      <div class="slds-col">
+        <lightning-button 
+          label={label.schedulerButtonLabel}
+          variant="brand"
+          onclick={handleSchedule}>
+        </lightning-button>
+      </div>
+      <div class="slds-col">
+        <lightning-button 
+          label={label.schedulerCancelButtonLabel}
+          variant="destructive"
+          onclick={openModal}>
+        </lightning-button>
+      </div>
     </div>
 
     <!-- Separador -->
@@ -27,7 +30,7 @@
     <!-- Rodapé -->
     <template if:true={nextExecution}>
       <div class="slds-text-align_center slds-text-body_regular">
-        <strong>Próxima execução:</strong> {nextExecution}
+        <strong>{label.nextExecutionLabel}:</strong> {nextExecution}
       </div>
     </template>
 
@@ -37,25 +40,30 @@
         <div class="slds-modal__container">
           <!-- Modal Header -->
           <header class="slds-modal__header slds-theme_warning">
-            <h2 class="slds-modal__title slds-hyphenate">Confirmar cancelamento</h2>
+            <h2 class="slds-modal__title slds-hyphenate">{label.schedulerConfirmCancelHeader}</h2>
           </header>
 
           <!-- Modal Body -->
-          <div class="slds-modal__content slds-p-around_medium">
-            Tem certeza que deseja cancelar o agendamento da classe?
+          <div class="slds-text-align_center slds-modal__content slds-p-around_medium">
+            {label.schedulerConfirmCancelBody}
           </div>
 
           <!-- Modal Footer -->
           <footer class="slds-modal__footer">
-            <lightning-button variant="neutral" label="Cancelar" onclick={closeModal}></lightning-button>
-            <lightning-button variant="destructive" label="Confirmar" onclick={handleDelete}></lightning-button>
+            <div class="slds-grid slds-grid_align-end slds-gutters_small">
+              <div class="slds-col">
+                <lightning-button variant="neutral" label={label.schedulerCancelModalButtonCancelLabel} onclick={closeModal}></lightning-button>
+              </div>
+              <div class="slds-col">
+                <lightning-button variant="destructive" label={label.schedulerCancelModalButtonConfirmLabel} onclick={handleDelete}></lightning-button>
+              </div>
+            </div>
           </footer>
         </div>
       </section>
       <div class="slds-backdrop slds-backdrop_open"></div>
     </template>
 
-    <!-- Erro (caso não queira usar toast como fallback) -->
     <template if:true={error}>
       <div class="slds-text-color_error slds-text-align_center">{error}</div>
     </template>

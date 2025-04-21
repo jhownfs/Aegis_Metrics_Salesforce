@@ -3,6 +3,7 @@ import scheduleJob from '@salesforce/apex/AegisMetricsServices.scheduleJob';
 import getNextExecutionTime from '@salesforce/apex/AegisMetricsServices.getNextExecutionTime';
 import deleteJob from '@salesforce/apex/AegisMetricsServices.deleteJob';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { label } from 'c/aegisLabelUtility';
 
 
 export default class AegisMetricsScheduler extends LightningElement {
@@ -10,7 +11,8 @@ export default class AegisMetricsScheduler extends LightningElement {
   @track nextExecution;
   @track error;
   @track showModal = false;
-
+  @track label = label;
+  
   connectedCallback() {
     this.loadNextExecution();
   }
@@ -18,9 +20,10 @@ export default class AegisMetricsScheduler extends LightningElement {
   async handleSchedule() {
     try {
       await scheduleJob();
+      this.showToast('Sucesso', 'Classe agendada com sucesso!', 'success');
       this.loadNextExecution();
     } catch (err) {
-      this.error = 'Erro ao agendar a classe.';
+      this.showToast('Erro', err.body.message, 'error');
       console.error(err);
     }
   }
@@ -28,11 +31,9 @@ export default class AegisMetricsScheduler extends LightningElement {
   async loadNextExecution() {
     try {
       this.nextExecution = await getNextExecutionTime();
-      this.showToast('Sucesso', 'Classe agendada com sucesso!', 'success');
       this.error = null;
     } catch (err) {
-      this.showToast('Erro', 'Erro ao agendar a classe.', 'error');
-      this.error = 'Erro ao buscar próxima execução.';
+      this.showToast('Erro', err.body.message, 'error');
       console.error(err);
     }
   }
@@ -44,7 +45,7 @@ export default class AegisMetricsScheduler extends LightningElement {
       this.nextExecution = null;
       this.showModal = false;
     } catch (err) {
-      this.showToast('Erro', 'Erro ao cancelar o agendamento.', 'error');
+      this.showToast('Error', err.body.message, 'error');
       console.error(err);
     }
   }
