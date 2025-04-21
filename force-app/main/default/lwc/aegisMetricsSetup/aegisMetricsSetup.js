@@ -10,7 +10,6 @@ export default class aegisMetricsSetup extends LightningElement {
  
   enabledMonitoringTypes;
   defaultMonitoringTypes;
-  hasRendered = false;
   @track label=label;
 
   async connectedCallback() {
@@ -22,24 +21,6 @@ export default class aegisMetricsSetup extends LightningElement {
       this.showMessageToUser('Error', 'Error fetching monitoring types. Please try again', 'error');
     }
   }
-
-  renderedCallback() { 
-
-    if (this.hasRendered) {
-      return;
-    }
-    
-    this.hasRendered = true;
-    console.log('Rendered Callback');
-    this.template.querySelectorAll('[data-element="allow-monitoring"]').forEach((checkbox) => {
-      const monitoringTypeId = checkbox.value;
-      const isEnabled = this.enabledMonitoringTypes.some(type => type.Id === monitoringTypeId);
-      console.log(`Monitoring Type ID: ${monitoringTypeId}, Is Enabled: ${isEnabled}`);
-      checkbox.checked = isEnabled;
-    });
-    console.log('Checkboxes initialized');
-
-  }
     
   handleToggle(event) {
     event.stopPropagation();
@@ -47,12 +28,12 @@ export default class aegisMetricsSetup extends LightningElement {
     const monitoringTypeId = event.target.value;
     const isEnabled = event.target.checked;
 
-   /* const Event_Monitoring_Type__mdt = {
+    const Event_Monitoring_Type__mdt = {
       Id: monitoringTypeId,
       Enabled_To_Ingest__c: isEnabled
-    };*/
+    };
 
-    //this.handleSave(Event_Monitoring_Type__mdt);
+    this.handleSave(Event_Monitoring_Type__mdt);
 
   }
 
