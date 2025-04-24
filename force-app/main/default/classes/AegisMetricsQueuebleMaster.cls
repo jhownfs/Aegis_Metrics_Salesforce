@@ -17,9 +17,11 @@ public with sharing class AegisMetricsQueuebleMaster implements Queueable {
             // No event log files to process
             return;
         }
+
         // Enqueue the queueable job for each event log file
-        for (Eventlogfile eventLogFile : eventLogFiles) {
-            System.enqueueJob(new AegisMetricsQueuebleSlave(eventLogFile));
-        }
+        Eventlogfile firstEventLogFile = eventLogFiles[0];
+        
+        System.enqueueJob(new AegisMetricsQueuebleSlave(firstEventLogFile, eventLogFiles));
+
     }
 }

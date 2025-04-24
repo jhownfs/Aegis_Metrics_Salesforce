@@ -4,9 +4,9 @@ public with sharing class AegisMetricsEventLogFileSelector {
         return [SELECT Id, LogFile, LogFileFieldNames, EventType, LogFileFieldTypes 
                 FROM Eventlogfile 
                 WHERE EventType IN : eventMonitoringTypeNames 
-                //AND logDate = LAST_N_DAYS:1
+                AND logDate = LAST_N_DAYS:2
                 AND Interval = 'Daily'
                 WITH SECURITY_ENFORCED
-                LIMIT 1];
+                ORDER BY EventType ASC];
     }
 }
