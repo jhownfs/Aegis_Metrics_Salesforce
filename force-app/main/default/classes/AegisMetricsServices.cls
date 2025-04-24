@@ -71,7 +71,7 @@ public with sharing class AegisMetricsServices {
 
     @AuraEnabled
     public static void scheduleJob() {
-        String cronExp = '0 0 20 * * ?'; // A dia
+        String cronExp = '0 0 8 * * ?'; // A dia
         System.schedule(CRONJOBNAME, cronExp, new AegisMetricsSch());
     }
 
@@ -86,4 +86,54 @@ public with sharing class AegisMetricsServices {
             System.abortJob(job.Id);
         }
     }
+
+    @AuraEnabled
+    public static void uploadSampleData(String jsonData) {
+
+       try{
+
+           Event_Monitoring_Type__mdt eventTypes = (Event_Monitoring_Type__mdt) JSON.deserialize(jsonData, Event_Monitoring_Type__mdt.class);
+
+           String eventName = eventTypes.MasterLabel.deleteWhitespace();
+
+           list<StaticResource> staticResources = AegisMetricsStaticResourcesSelector.getStaticResourcesByName(eventName);
+
+           if(staticResources.isEmpty()) {
+               throw new AuraHandledException('Static resource not found');
+           }
+
+           List<String> fieldNames = eventTypes.Log_File_Field_Names__c.split(',');
+           List<String> fieldTypes = eventTypes.Log_File_Field_Types__c.split(',');
+
+           map<String,String> eventLogFileJson = new map<String,String>();
+           
+           for(Integer i = 0; i < fieldNames.size(); i++) {
+
+            eventLogFileJson.put(fieldNames[i], fieldTypes[i]);
+
+          }
+
+          AegisMetricsSchemaGenerator schemaGenerator = new AegisMetricsSchemaGenerator(eventLogFileJson, eventName);
+
+          Blob schemaBlob = Blob.valueOf(schemaGenerator.generetaSchemaEventlog());
+
+          InsightsExternalData insightExternalData = AegisMetricsInsightExternalDataFactory.createInsightExternalData(eventName, schemaBlob);
+          
+          Database.insert(insightExternalData);
+
+          Blob fileContent = staticResources[0].body;
+
+          InsightsExternalDataPart insightExternalDataPart = AegisMetricsInsightExternalDataPtFactory.createInsightExternalDataPart(fileContent, insightExternalData.Id, 1);
+       
+          Database.insert(insightExternalDataPart);
+
+          insightExternalData.Action = 'Process';
+            
+          Database.update(insightExternalData);          
+
+       } catch (Exception e) {
+              throw new AuraHandledException(e.getMessage());
+    }
+    }
+
 }

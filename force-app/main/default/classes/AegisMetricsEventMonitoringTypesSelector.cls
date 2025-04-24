@@ -1,7 +1,8 @@
 public with sharing class AegisMetricsEventMonitoringTypesSelector {
     
     public static list<Event_Monitoring_Type__mdt> getAllEventMonitoringTypes() {
-       return [SELECT Id, MasterLabel, Enabled_To_Admin__c, Enabled_To_Ingest__c, Default_Event__c
+       return [SELECT Id, MasterLabel, Enabled_To_Admin__c, Enabled_To_Ingest__c, Default_Event__c, 
+               Log_File_Field_Names__c, Log_File_Field_Types__c
                FROM Event_Monitoring_Type__mdt 
                WITH SECURITY_ENFORCED
                ORDER BY MasterLabel];

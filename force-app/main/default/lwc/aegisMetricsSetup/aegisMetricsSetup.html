@@ -35,6 +35,11 @@
                   >
                   </lightning-input>
                   </template>
+                  <c-aegis-metrics-upload-sample-data 
+                  event-name={enabledMonitoringType.MasterLabel}
+                  fields-names={enabledMonitoringType.Log_File_Field_Names__c}
+                  fields-types={enabledMonitoringType.Log_File_Field_Types__c}
+                  ></c-aegis-metrics-upload-sample-data>
                 </fieldset>
                </div>
              </template> 
