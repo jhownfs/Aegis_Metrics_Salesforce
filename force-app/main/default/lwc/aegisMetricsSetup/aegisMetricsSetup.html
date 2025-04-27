@@ -12,34 +12,41 @@
                   class="slds-text-title_caps slds-theme_default slds-p-horizontal_x-small slds-grid slds-align-center legend-label">
                     <span class="slds-m-right_x-small">{enabledMonitoringType.MasterLabel}</span>
                   </legend>
-                 <template if:true={enabledMonitoringType.Enabled_To_Ingest__c}>
-                    <lightning-input 
-                      type="toggle" 
-                      label=""
-                      name={enabledMonitoringType.MasterLabel}
-                      value={enabledMonitoringType.Id}
-                      message-toggle-active={label.toggleActive}
-                      checked
-                      message-toggle-inactive={label.toggerInative} onchange={handleToggle}
-                    >
-                    </lightning-input>
-                  </template>
-                  <template if:false={enabledMonitoringType.Enabled_To_Ingest__c}>
-                    <lightning-input 
-                    type="toggle" 
-                    label=""
-                    name={enabledMonitoringType.MasterLabel}
-                    value={enabledMonitoringType.Id}
-                    message-toggle-active={label.toggleActive}
-                    message-toggle-inactive={label.toggerInative} onchange={handleToggle}
-                  >
-                  </lightning-input>
-                  </template>
-                  <c-aegis-metrics-upload-sample-data 
-                  event-name={enabledMonitoringType.MasterLabel}
-                  fields-names={enabledMonitoringType.Log_File_Field_Names__c}
-                  fields-types={enabledMonitoringType.Log_File_Field_Types__c}
-                  ></c-aegis-metrics-upload-sample-data>
+
+                <div class="slds-grid slds-gutters">
+                  <div class="slds-col">
+                    <template if:true={enabledMonitoringType.Enabled_To_Ingest__c}>
+                        <lightning-input 
+                         type="toggle" 
+                         label=""
+                         name={enabledMonitoringType.MasterLabel}
+                         value={enabledMonitoringType.Id}
+                         message-toggle-active={label.toggleActive}
+                         checked
+                         message-toggle-inactive={label.toggerInative} onchange={handleToggle}
+                        >
+                        </lightning-input>
+                    </template>
+                    <template if:false={enabledMonitoringType.Enabled_To_Ingest__c}>
+                        <lightning-input 
+                        type="toggle" 
+                        label=""
+                        name={enabledMonitoringType.MasterLabel}
+                        value={enabledMonitoringType.Id}
+                        message-toggle-active={label.toggleActive}
+                        message-toggle-inactive={label.toggerInative} onchange={handleToggle}
+                       >
+                      </lightning-input>
+                    </template>
+                  </div>
+                  <div class="slds-col">
+                    <c-aegis-metrics-upload-sample-data 
+                    event-name={enabledMonitoringType.MasterLabel}
+                    fields-names={enabledMonitoringType.Log_File_Field_Names__c}
+                    fields-types={enabledMonitoringType.Log_File_Field_Types__c}
+                    ></c-aegis-metrics-upload-sample-data>
+                </div>
+                </div>  
                 </fieldset>
                </div>
              </template> 

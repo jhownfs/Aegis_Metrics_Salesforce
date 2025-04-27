@@ -7,6 +7,7 @@ public with sharing class AegisMetricsSchemaGenerator {
         'Number' => 'Numeric',
         'Date' => 'Date',
         'DateTime' => 'Date',
+        'Boolean' => 'Boolean',
         'Id' => 'Text'
     };
 
