@@ -9,7 +9,6 @@ public with sharing class AegisMetricsInsightExternalDataFactory {
         insightExternalData.Operation = 'Append';
         insightExternalData.EdgemartContainer = 'AegisMetrics';
         insightExternalData.MetadataJson = MetadataJson;
-        insightExternalData.Mode = 'Incremental';
         
         return insightExternalData;
     }

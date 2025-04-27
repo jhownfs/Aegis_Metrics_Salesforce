@@ -71,7 +71,7 @@ public with sharing class AegisMetricsServices {
 
     @AuraEnabled
     public static void scheduleJob() {
-        String cronExp = '0 0 8 * * ?'; // A dia
+        String cronExp = '0 0 10 * * ?'; // A dia
         System.schedule(CRONJOBNAME, cronExp, new AegisMetricsSch());
     }
 
@@ -87,7 +87,7 @@ public with sharing class AegisMetricsServices {
         }
     }
 
-    @AuraEnabled
+   // @AuraEnabled
     public static void uploadSampleData(String jsonData) {
 
        try{
@@ -115,9 +115,11 @@ public with sharing class AegisMetricsServices {
 
           AegisMetricsSchemaGenerator schemaGenerator = new AegisMetricsSchemaGenerator(eventLogFileJson, eventName);
 
+          system.debug( 'schemaGenerator = ' + schemaGenerator.generetaSchemaEventlog());
+
           Blob schemaBlob = Blob.valueOf(schemaGenerator.generetaSchemaEventlog());
 
-          InsightsExternalData insightExternalData = AegisMetricsInsightExternalDataFactory.createInsightExternalData(eventName, schemaBlob);
+          /*InsightsExternalData insightExternalData = AegisMetricsInsightExternalDataFactory.createInsightExternalData(eventName, schemaBlob);
           
           Database.insert(insightExternalData);
 
@@ -129,10 +131,11 @@ public with sharing class AegisMetricsServices {
 
           insightExternalData.Action = 'Process';
             
-          Database.update(insightExternalData);          
+          Database.update(insightExternalData);     */     
 
        } catch (Exception e) {
-              throw new AuraHandledException(e.getMessage());
+        system.debug('Error: ' + e.getMessage());
+              //throw new AuraHandledException(e.getMessage());
     }
     }
 
