@@ -92,7 +92,7 @@ public with sharing class AegisMetricsSchemaGenerator {
           field.defaultValue = '0';
           field.format = '0.000';
           field.decimalSeparator = '.';
-        } else if(type == 'Date' || type == 'Datetime') {
+        } else if(type == 'Date' || type == 'DateTime') {
           field.format ='yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'';
         }
 

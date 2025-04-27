@@ -71,7 +71,7 @@ public with sharing class AegisMetricsServices {
 
     @AuraEnabled
     public static void scheduleJob() {
-        String cronExp = '0 0 10 * * ?'; // A dia
+        String cronExp = '0 0 10 * * ?';
         System.schedule(CRONJOBNAME, cronExp, new AegisMetricsSch());
     }
 
@@ -87,7 +87,7 @@ public with sharing class AegisMetricsServices {
         }
     }
 
-   // @AuraEnabled
+    @AuraEnabled
     public static void uploadSampleData(String jsonData) {
 
        try{
@@ -97,6 +97,8 @@ public with sharing class AegisMetricsServices {
            String eventName = eventTypes.MasterLabel.deleteWhitespace();
 
            list<StaticResource> staticResources = AegisMetricsStaticResourcesSelector.getStaticResourcesByName(eventName);
+
+           eventName += 'SampleData';
 
            if(staticResources.isEmpty()) {
                throw new AuraHandledException('Static resource not found');
@@ -115,11 +117,9 @@ public with sharing class AegisMetricsServices {
 
           AegisMetricsSchemaGenerator schemaGenerator = new AegisMetricsSchemaGenerator(eventLogFileJson, eventName);
 
-          system.debug( 'schemaGenerator = ' + schemaGenerator.generetaSchemaEventlog());
-
           Blob schemaBlob = Blob.valueOf(schemaGenerator.generetaSchemaEventlog());
 
-          /*InsightsExternalData insightExternalData = AegisMetricsInsightExternalDataFactory.createInsightExternalData(eventName, schemaBlob);
+          InsightsExternalData insightExternalData = AegisMetricsInsightExternalDataFactory.createInsightExternalData(eventName, schemaBlob);
           
           Database.insert(insightExternalData);
 
@@ -129,14 +129,13 @@ public with sharing class AegisMetricsServices {
        
           Database.insert(insightExternalDataPart);
 
-          insightExternalData.Action = 'Process';
+          insightExternalData = AegisMetricsInsightExternalDataFactory.changeActionToExecuteIngestData(insightExternalData);
             
-          Database.update(insightExternalData);     */     
+          Database.update(insightExternalData);     
 
        } catch (Exception e) {
-        system.debug('Error: ' + e.getMessage());
-              //throw new AuraHandledException(e.getMessage());
-    }
+          throw new AuraHandledException(e.getMessage());
+      }
     }
 
 }

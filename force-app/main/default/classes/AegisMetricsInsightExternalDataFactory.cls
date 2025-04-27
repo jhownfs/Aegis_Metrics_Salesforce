@@ -12,4 +12,11 @@ public with sharing class AegisMetricsInsightExternalDataFactory {
         
         return insightExternalData;
     }
+
+    public static InsightsExternalData changeActionToExecuteIngestData(InsightsExternalData insightExternalData) {
+        
+        insightExternalData.Action = 'Process';
+        
+        return insightExternalData;
+    }
 }

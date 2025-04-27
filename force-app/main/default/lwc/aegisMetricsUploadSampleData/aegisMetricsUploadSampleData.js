@@ -18,14 +18,14 @@ export default class AegisMetricsUploadSampleData extends LightningElement {
 
     uploadSampleData({ jsonData: JSON.stringify(Event_Monitoring_Type__mdt) })
 
-      .then((result) => {
+      .then(() => {
         this.dispatchEvent(new ShowToastEvent({
           title: 'Success',
           message: 'Data Uploaded Successfully',
           variant: 'success'
         }));
       })
-      .catch((error) => {
+      .catch(() => {
         this.dispatchEvent(new ShowToastEvent({
           title: 'Error',
           message: 'Error Uploading Data',
