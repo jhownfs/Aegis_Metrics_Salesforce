@@ -1,10 +1,25 @@
 <template>
-    <lightning-button
-        variant="brand"
-        label="Upload Sample Data"
-        title="Upload Sample Data"
-        onclick={handleUploadSampleData}
-        class="slds-m-around_medium"
-        icon-name="utility:upload">
-    </lightning-button>
+    <div class="container">
+
+        <lightning-button
+            variant="brand"
+            label="Upload Sample Data"
+            title="Upload Sample Data"
+            onclick={handleUploadSampleData}
+            class="slds-m-around_medium"
+            icon-name="utility:upload">
+        </lightning-button>
+        <template if:true={isLoading}>
+          <div class="overlay">
+            <div class="progress-container">
+              <lightning-progress-bar
+                value={progress}
+                size="medium"
+                class={progressBarClass}>
+              </lightning-progress-bar>
+              <div class="progress-text">{progressRoundedDisplay}</div>
+            </div>
+          </div>
+        </template>
+   </div>
 </template>

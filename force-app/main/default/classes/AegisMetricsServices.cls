@@ -88,7 +88,13 @@ public with sharing class AegisMetricsServices {
     }
 
     @AuraEnabled
-    public static void uploadSampleData(String jsonData) {
+    public static String uploadSampleData(String jsonData) {
+
+       String InsightsExternalDataId = '';
+       
+       if (String.isBlank(jsonData)) {
+              throw new AuraHandledException('jsonData is null or empty');
+       }
 
        try{
 
@@ -131,11 +137,39 @@ public with sharing class AegisMetricsServices {
 
           insightExternalData = AegisMetricsInsightExternalDataFactory.changeActionToExecuteIngestData(insightExternalData);
             
-          Database.update(insightExternalData);     
+          Database.update(insightExternalData);  
+          
+          InsightsExternalDataId = insightExternalData.Id;
 
        } catch (Exception e) {
           throw new AuraHandledException(e.getMessage());
       }
+
+      return InsightsExternalDataId;
     }
+
+    @AuraEnabled
+    public static String getInsightExternalDataStatus(String name) {
+       
+        String status = '';
+        String eventName = name.deleteWhitespace() + 'SampleData';
+
+        try{
+
+            List<InsightsExternalData> insightExternalData = [SELECT Id, Status 
+                                                              FROM InsightsExternalData 
+                                                              WHERE EdgemartAlias =: eventName
+                                                              order by CreatedDate desc
+                                                              LIMIT 1];
+
+            status = insightExternalData[0].Status;
+
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+
+        }
+
+        return status;
+    }    
 
 }
