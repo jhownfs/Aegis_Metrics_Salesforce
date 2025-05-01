@@ -23,6 +23,7 @@ export default class AegisMetricsUploadSampleData extends LightningElement {
 
 
   async handleUploadSampleData(event) {
+    
     this.progress = 0;
     event.preventDefault();
     event.stopPropagation();

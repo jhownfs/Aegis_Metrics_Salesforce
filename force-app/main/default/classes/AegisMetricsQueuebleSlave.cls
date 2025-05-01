@@ -42,16 +42,17 @@ public with sharing class AegisMetricsQueuebleSlave implements Queueable {
               insightExternalData.Action = 'Process';
                 
               Database.update(insightExternalData);
-
-              if(hasCurrentQueueableStackDepthReached()) {
-                  return;
-              }
-
-              processNextEventLogFile();
             
         } catch (Exception ex) {
             System.debug(ex.getMessage());
-        } 
+        } finally {
+            
+            if(hasCurrentQueueableStackDepthReached()) {
+                return;
+            }
+
+            processNextEventLogFile();
+        }
     }
 
 

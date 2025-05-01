@@ -9,7 +9,6 @@ import { label } from 'c/aegisLabelUtility';
 export default class AegisMetricsScheduler extends LightningElement {
 
   @track nextExecution;
-  @track error;
   @track showModal = false;
   @track label = label;
   
@@ -24,17 +23,14 @@ export default class AegisMetricsScheduler extends LightningElement {
       this.loadNextExecution();
     } catch (err) {
       this.showToast('Erro', err.body.message, 'error');
-      console.error(err);
     }
   }
 
   async loadNextExecution() {
     try {
       this.nextExecution = await getNextExecutionTime();
-      this.error = null;
     } catch (err) {
       this.showToast('Erro', err.body.message, 'error');
-      console.error(err);
     }
   }
 
@@ -46,10 +42,10 @@ export default class AegisMetricsScheduler extends LightningElement {
       this.showModal = false;
     } catch (err) {
       this.showToast('Error', err.body.message, 'error');
-      console.error(err);
     }
   }
 
+  
     showToast(title, message, variant) {
       this.dispatchEvent(new ShowToastEvent({ title, message, variant }));
     }
