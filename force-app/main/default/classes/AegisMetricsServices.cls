@@ -71,7 +71,7 @@ public with sharing class AegisMetricsServices {
 
     @AuraEnabled
     public static void scheduleJob() {
-        String cronExp = '0 0 10 * * ?';
+        String cronExp = '0 0 12 * * ?';
         System.schedule(CRONJOBNAME, cronExp, new AegisMetricsSch());
     }
 
