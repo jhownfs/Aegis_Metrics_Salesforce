@@ -6,13 +6,22 @@
       <h1 class="slds-text-heading_large slds-theme_shade slds-p-around_small">{label.schedulerHeader}</h1>
     </div>
 
+    <lightning-input
+    type="time"
+    label="Hora da Execução"
+    value={selectedTime}
+    onchange={handleTimeChange}
+    required>
+  </lightning-input>
+
     <!-- Botões -->
     <div class="slds-grid slds-grid_align-center slds-m-bottom_large slds-gutters_medium slds-gutters_small">
       <div class="slds-col">
         <lightning-button 
           label={label.schedulerButtonLabel}
           variant="brand"
-          onclick={handleSchedule}>
+          onclick={handleSchedule}
+          disabled={isLoading}>
         </lightning-button>
       </div>
       <div class="slds-col">
@@ -24,14 +33,19 @@
       </div>
     </div>
 
-    <!-- Separador -->
-    <div class="slds-border_top slds-m-bottom_medium"></div>
 
     <!-- Rodapé -->
     <template if:true={nextExecution}>
-      <div class="slds-text-align_center slds-text-body_regular">
-        <strong>{label.nextExecutionLabel}:</strong> {nextExecution}
-      </div>
+      <!-- Separador -->
+      <div class="slds-border_top slds-m-bottom_medium"></div>
+   
+        <!-- Lembrete animado -->
+        <div class="daily-reminder slds-m-top_small">
+          🔔 O job será executado **todos os dias** às <strong>{selectedTime}</strong>.
+        </div>
+        <div class="slds-text-align_center slds-text-body_regular">
+          <strong>{label.nextExecutionLabel}:</strong> {nextExecution}
+        </div>
     </template>
 
     <!-- Modal -->

@@ -8,6 +8,7 @@ import { label } from 'c/aegisLabelUtility';
 
 export default class AegisMetricsScheduler extends LightningElement {
 
+  @track selectedTime = '08:00';
   @track nextExecution;
   @track showModal = false;
   @track label = label;
@@ -16,11 +17,22 @@ export default class AegisMetricsScheduler extends LightningElement {
     this.loadNextExecution();
   }
 
+  handleTimeChange(event) {
+    this.selectedTime = event.target.value;
+  }
+
   async handleSchedule() {
+
     try {
-      await scheduleJob();
+      
+      const today = new Date();
+      const [hour, minute] = this.selectedTime.split(':');
+      today.setHours(hour, minute, 0, 0);
+      const cron = `0 ${minute} ${hour} * * ?`;
+
+      await scheduleJob({ cronExpression: cron });
+
       this.showToast('Sucesso', 'Classe agendada com sucesso!', 'success');
-      this.loadNextExecution();
     } catch (err) {
       this.showToast('Erro', err.body.message, 'error');
     }
@@ -29,6 +41,7 @@ export default class AegisMetricsScheduler extends LightningElement {
   async loadNextExecution() {
     try {
       this.nextExecution = await getNextExecutionTime();
+      console.log('Next execution:', this.nextExecution);
     } catch (err) {
       this.showToast('Erro', err.body.message, 'error');
     }

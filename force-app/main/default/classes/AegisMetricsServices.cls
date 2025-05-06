@@ -63,16 +63,15 @@ public with sharing class AegisMetricsServices {
         ];
 
         if (cron.isEmpty()) {
-            return null;  
+            return '';  
         }
 
         return String.valueOf(cron[0].NextFireTime);
     }
 
     @AuraEnabled
-    public static void scheduleJob() {
-        String cronExp = '0 0 12 * * ?';
-        System.schedule(CRONJOBNAME, cronExp, new AegisMetricsSch());
+    public static void scheduleJob( String cronExpression) {
+        System.schedule(CRONJOBNAME, cronExpression, new AegisMetricsSch());
     }
 
     @AuraEnabled
