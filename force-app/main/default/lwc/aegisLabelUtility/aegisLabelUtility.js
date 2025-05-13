@@ -10,6 +10,7 @@ import schedulerConfirmCancelHeader from '@salesforce/label/c.Aegis_Metrics_Canc
 import schedulerConfirmCancelBody from '@salesforce/label/c.Aegis_Metrics_Cancel_Scheduler_Modal_Body';
 import schedulerCancelModalButtonCancelLabel from '@salesforce/label/c.Aegis_Metrics_Cancel_Scheduler_Modal_Button_Cancel_Label';
 import schedulerCancelModalButtonConfirmLabel from '@salesforce/label/c.Aegis_Metrics_Cancel_Scheduler_Modal_Button_Confirm_Label'; 
+import schedulerRemindeExecutionLabel from '@salesforce/label/c.Aegis_Metrics_Remider_Scheduler_Execution';
 
  const label = {
     setupEvent,
@@ -23,7 +24,8 @@ import schedulerCancelModalButtonConfirmLabel from '@salesforce/label/c.Aegis_Me
     schedulerConfirmCancelHeader,
     schedulerConfirmCancelBody,
     schedulerCancelModalButtonCancelLabel,
-    schedulerCancelModalButtonConfirmLabel
+    schedulerCancelModalButtonConfirmLabel,
+    schedulerRemindeExecutionLabel
   };
 
 export {label};

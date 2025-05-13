@@ -52,7 +52,7 @@ public with sharing class AegisMetricsServices {
         return isSuccess;
     }
 
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled
     public static String getNextExecutionTime() {
         List<CronTrigger> cron = [
             SELECT NextFireTime 

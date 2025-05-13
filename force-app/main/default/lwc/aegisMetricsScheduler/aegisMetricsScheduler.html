@@ -2,52 +2,57 @@
   <div class="scheduler-box slds-box slds-theme_default slds-p-around_large slds-m-around_medium">
     
     <!-- Header -->
-    <div class="slds-text-align_center slds-m-bottom_large">
-      <h1 class="slds-text-heading_large slds-theme_shade slds-p-around_small">{label.schedulerHeader}</h1>
+    <div class="slds-page-header slds-page-header_joined slds-m-bottom_large">
+      <div class="slds-media">
+        <div class="slds-media__figure">
+          <lightning-icon icon-name="utility:clock" alternative-text="Agendamento" size="medium"></lightning-icon>
+        </div>
+        <div class="slds-media__body">
+          <h1 class="slds-page-header__title slds-text-heading_medium">{label.schedulerHeader}</h1>
+        </div>
+      </div>
     </div>
-
-    <lightning-input
-    type="time"
-    label="Hora da Execução"
-    value={selectedTime}
-    onchange={handleTimeChange}
-    required>
-  </lightning-input>
+    
+    <lightning-card title="Configuração de Horário">
+      <div class="slds-p-horizontal_medium slds-p-vertical_small">
+        <lightning-input
+          type="time"
+          label="Hora da Execução"
+          value={selectedTime}
+          onchange={handleTimeChange}
+          required>
+        </lightning-input>
+    
+        <template if:true={nextExecution}>
+          <div class="slds-m-top_medium slds-text-align_center">
+            <p class="slds-text-color_success slds-text-heading_small">
+              🔔 {label.schedulerRemindeExecutionLabel} <strong>{selectedTime}</strong>
+            </p>
+            <p class="slds-text-body_regular">{label.nextExecutionLabel}: {nextExecution}</p>
+          </div>
+        </template>
+      </div>
+    </lightning-card>
+    
 
     <!-- Botões -->
-    <div class="slds-grid slds-grid_align-center slds-m-bottom_large slds-gutters_medium slds-gutters_small">
-      <div class="slds-col">
+    <div class="slds-m-top_large slds-align_absolute-center">
+      <lightning-button-group>
         <lightning-button 
           label={label.schedulerButtonLabel}
           variant="brand"
           onclick={handleSchedule}
           disabled={isLoading}>
         </lightning-button>
-      </div>
-      <div class="slds-col">
+    
         <lightning-button 
           label={label.schedulerCancelButtonLabel}
           variant="destructive"
           onclick={openModal}>
         </lightning-button>
-      </div>
+      </lightning-button-group>
     </div>
-
-
-    <!-- Rodapé -->
-    <template if:true={nextExecution}>
-      <!-- Separador -->
-      <div class="slds-border_top slds-m-bottom_medium"></div>
-   
-        <!-- Lembrete animado -->
-        <div class="daily-reminder slds-m-top_small">
-          🔔 O job será executado **todos os dias** às <strong>{selectedTime}</strong>.
-        </div>
-        <div class="slds-text-align_center slds-text-body_regular">
-          <strong>{label.nextExecutionLabel}:</strong> {nextExecution}
-        </div>
-    </template>
-
+    
     <!-- Modal -->
     <template if:true={showModal}>
       <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">

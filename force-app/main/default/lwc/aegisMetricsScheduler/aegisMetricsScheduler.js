@@ -31,8 +31,9 @@ export default class AegisMetricsScheduler extends LightningElement {
       const cron = `0 ${minute} ${hour} * * ?`;
 
       await scheduleJob({ cronExpression: cron });
-
       this.showToast('Sucesso', 'Classe agendada com sucesso!', 'success');
+      this.nextExecution = this.selectedTime;
+
     } catch (err) {
       this.showToast('Erro', err.body.message, 'error');
     }
@@ -41,7 +42,6 @@ export default class AegisMetricsScheduler extends LightningElement {
   async loadNextExecution() {
     try {
       this.nextExecution = await getNextExecutionTime();
-      console.log('Next execution:', this.nextExecution);
     } catch (err) {
       this.showToast('Erro', err.body.message, 'error');
     }
