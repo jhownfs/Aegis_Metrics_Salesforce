@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionOverrides>
-        <actionName>Tab</actionName>
-        <content>Aegis_Metrics_Home</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-    </actionOverrides>
     <brand>
         <headerColor>#0070D2</headerColor>
         <logo>Leonardo_Phoenix_10_A_futuristic_hi</logo>
@@ -23,37 +15,17 @@
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Aegis Metrics</label>
     <navType>Console</navType>
-    <profileActionOverrides>
-        <actionName>Tab</actionName>
-        <content>Aegis_Metrics_Home</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Aegis_Metrics_Object_Monitor_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>AegisMetricsObjectMonitor__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>Aegis_Metrics_Object_Monitor_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>AegisMetricsObjectMonitor__c</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
     <setupExperience>service</setupExperience>
-    <tabs>AegisMetricsObjectMonitor__c</tabs>
+    <tabs>Welcome</tabs>
+    <tabs>Setup</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Aegis_Metrics_UtilityBar</utilityBar>
     <workspaceConfig>
         <mappings>
-            <tab>AegisMetricsObjectMonitor__c</tab>
+            <tab>Setup</tab>
+        </mappings>
+        <mappings>
+            <tab>Welcome</tab>
         </mappings>
     </workspaceConfig>
 </CustomApplication>

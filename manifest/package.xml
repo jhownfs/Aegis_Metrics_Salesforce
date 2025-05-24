@@ -22,6 +22,10 @@
 		<name>CustomApplication</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>CustomLabels</name>
+	</types>
+	<types>
 		<members>Event_Monitoring_Type.API_Total_Usage</members>
 		<members>Event_Monitoring_Type.Apex_Callout</members>
 		<members>Event_Monitoring_Type.Apex_Execution</members>

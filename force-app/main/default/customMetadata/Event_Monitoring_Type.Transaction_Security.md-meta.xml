@@ -14,4 +14,12 @@
         <field>Enabled_To_Ingest__c</field>
         <value xsi:type="xsd:boolean">false</value>
     </values>
+    <values>
+        <field>Log_File_Field_Names__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Log_File_Field_Types__c</field>
+        <value xsi:nil="true"/>
+    </values>
 </CustomMetadata>

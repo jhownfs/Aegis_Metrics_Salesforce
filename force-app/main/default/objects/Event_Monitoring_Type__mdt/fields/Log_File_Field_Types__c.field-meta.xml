@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Log_File_Field_Types__c</fullName>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Log File Field Types</label>
+    <length>1333</length>
+    <type>LongTextArea</type>
+    <visibleLines>2</visibleLines>
+</CustomField>

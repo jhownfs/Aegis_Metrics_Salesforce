@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Aegis_Metrics_Cancel_Button_Label</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Cancel Button Label</shortDescription>
+        <value>Cancel Scheduler</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Cancel_Scheduler_Modal_Body</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Cancel Scheduler Modal Body</shortDescription>
+        <value>Are you sure you want to cancel the class schedule?</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Cancel_Scheduler_Modal_Button_Cancel_Label</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Cancel Scheduler Modal Button Cancel Label</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Cancel_Scheduler_Modal_Button_Confirm_Label</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Cancel Scheduler Modal Button Confirm Label</shortDescription>
+        <value>Confirm</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Cancel_Scheduler_Modal_Header</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Cancel Scheduler Modal Header</shortDescription>
+        <value>Confirm Cancellation</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Next_Execution_Label</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Next Execution Label</shortDescription>
+        <value>Next Execution</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Remider_Scheduler_Execution</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Aegis Metrics Remider Scheduler Execution</shortDescription>
+        <value>Execute every day at</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Scheduler_Button_Label</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Scheduler Button Label</shortDescription>
+        <value>Schedule Execution</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Scheduler_Header</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Scheduler Header</shortDescription>
+        <value>Scheduler Manager</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Setup_Events</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Setup Events</shortDescription>
+        <value>Setup Events</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Toast_Error_Message</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Toast Error Message</shortDescription>
+        <value>Error updating event, Contact your admin.</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Toast_Success_Message</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Toast Success Message</shortDescription>
+        <value>Event updated successfully!</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Toggle_Active</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Toggle Active</shortDescription>
+        <value>Active</value>
+    </labels>
+    <labels>
+        <fullName>Aegis_Metrics_Toggle_Inative</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Toggle Inative</shortDescription>
+        <value>Inative</value>
+    </labels>
+    <labels>
+        <fullName>Aegist_Metrics_Default_Events</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegist Metrics Default Events</shortDescription>
+        <value>Default Events</value>
+    </labels>
+</CustomLabels>
