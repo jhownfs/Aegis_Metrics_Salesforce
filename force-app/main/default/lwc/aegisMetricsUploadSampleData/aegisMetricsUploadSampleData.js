@@ -2,6 +2,7 @@ import { LightningElement, api, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import uploadSampleData from '@salesforce/apex/AegisMetricsServices.uploadSampleData';
 import getInsightExternalDataStatus from '@salesforce/apex/AegisMetricsServices.getInsightExternalDataStatus';
+import { label  } from 'c/aegisLabelUtility';
 
 export default class AegisMetricsUploadSampleData extends LightningElement {
 
@@ -16,6 +17,8 @@ export default class AegisMetricsUploadSampleData extends LightningElement {
   showCheckmark = false;
   hideProgressBar = false;
 
+  label=label;
+
   disconnectedCallback() {  
       cancelAnimationFrame(this.pollingRequestId);
       cancelAnimationFrame(this.progressRequestId);
@@ -27,7 +30,6 @@ export default class AegisMetricsUploadSampleData extends LightningElement {
     this.progress = 0;
     event.preventDefault();
     event.stopPropagation();
-
 
     const Event_Monitoring_Type__mdt = {
       MasterLabel: this.eventName,

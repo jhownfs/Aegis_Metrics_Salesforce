@@ -1,4 +1,4 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement } from 'lwc';
 import getMonitoringTypes from '@salesforce/apex/AegisMetricsServices.getMonitoringTypes';
 import updateMonitoringTypes from '@salesforce/apex/AegisMetricsServices.updateEventTypes';
 import successMessage from '@salesforce/label/c.Aegis_Metrics_Toast_Success_Message';
@@ -10,7 +10,7 @@ export default class aegisMetricsSetup extends LightningElement {
  
   enabledMonitoringTypes;
   defaultMonitoringTypes;
-  @track label=label;
+  label=label;
 
   async connectedCallback() {
     try {

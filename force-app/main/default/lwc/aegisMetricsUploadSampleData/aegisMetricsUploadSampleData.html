@@ -3,12 +3,13 @@
 
         <lightning-button
             variant="brand"
-            label="Upload Sample Data"
-            title="Upload Sample Data"
+            label={label.useDemoData}
+            title={label.useDemoData}
             onclick={handleUploadSampleData}
-            class="slds-m-around_medium"
-            icon-name="utility:upload">
+            class="slds-m-around_medium slds-show_medium-up" icon-name="utility:upload"
+            >
         </lightning-button>
+
         <template if:true={isLoading}>
           <div class="overlay">
             <div class="progress-container">

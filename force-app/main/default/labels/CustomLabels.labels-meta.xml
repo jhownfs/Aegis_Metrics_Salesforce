@@ -41,6 +41,14 @@
         <value>Confirm Cancellation</value>
     </labels>
     <labels>
+        <fullName>Aegis_Metrics_Default_Events</fullName>
+        <categories>Aegis Metrics App</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Aegis Metrics Default Events</shortDescription>
+        <value>Default Events</value>
+    </labels>
+    <labels>
         <fullName>Aegis_Metrics_Next_Execution_Label</fullName>
         <categories>Aegis Metrics App</categories>
         <language>en_US</language>
@@ -113,11 +121,11 @@
         <value>Inative</value>
     </labels>
     <labels>
-        <fullName>Aegist_Metrics_Default_Events</fullName>
+        <fullName>Aegist_Metrics_Use_Demo_Data</fullName>
         <categories>Aegis Metrics App</categories>
         <language>en_US</language>
-        <protected>false</protected>
-        <shortDescription>Aegist Metrics Default Events</shortDescription>
-        <value>Default Events</value>
+        <protected>true</protected>
+        <shortDescription>Aegist Metrics Use Demo Data</shortDescription>
+        <value>Use Demo Data</value>
     </labels>
 </CustomLabels>

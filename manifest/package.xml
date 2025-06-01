@@ -111,6 +111,11 @@
 		<name>Profile</name>
 	</types>
 	<types>
+		<members>APITotalUsage</members>
+		<members>UiTelemetryNavigationTiming</members>
+		<name>StaticResource</name>
+	</types>
+	<types>
 		<members>AegisMetrics</members>
 		<name>WaveApplication</name>
 	</types>

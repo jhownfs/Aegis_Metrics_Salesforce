@@ -16,10 +16,10 @@
     </values>
     <values>
         <field>Log_File_Field_Names__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">API_FAMILY,API_RESOURCE,API_VERSION,CLIENT_IP,CLIENT_NAME,CONNECTED_APP_ID,CONNECTED_APP_NAME,COUNTS_AGAINST_API_LIMIT,ENTITY_NAME,EVENT_TYPE,HTTP_METHOD,ORGANIZATION_ID,REQUEST_ID,STATUS_CODE,TIMESTAMP,TIMESTAMP_DERIVED,USER_ID,USER_NAME</value>
     </values>
     <values>
         <field>Log_File_Field_Types__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">String,String,Number,String,String,String,String,Boolean,String,String,String,Id,String,Number,String,DateTime,Id,String</value>
     </values>
 </CustomMetadata>
