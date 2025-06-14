@@ -1,0 +1,39 @@
+<template>
+  <div class="slds-box slds-theme_default slds-m-around_medium">
+    <h2 class="slds-text-heading_medium slds-text-align_center slds-m-bottom_medium">
+      📊 Jobs Aegies Metrics - CRM Analytics
+    </h2>
+
+    <template if:true={jobs.length}>
+      <lightning-layout multiple-rows>
+        <template for:each={jobs} for:item="job">
+          <lightning-layout-item key={job.id} size="12" class="slds-p-around_small">
+            <div class="slds-box slds-theme_success slds-box_x-small">
+              <div class="slds-grid slds-grid_align-spread">
+                <strong>{job.dataflowName}</strong>
+                <span class="slds-badge slds-badge_inverse">{job.status}</span>
+              </div>
+              <div class="slds-text-body_small slds-m-top_x-small">
+                Início: {job.startTime}<br />
+                Duração: {job.duration}  <br />
+                Tempo de espera: {job.waitTime} <br />
+              </div>
+            </div>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+    </template>
+
+    <template if:true={isLoading}>
+      <div class="slds-text-align_center slds-m-top_large">
+        <lightning-spinner alternative-text="Carregando jobs..." size="medium"></lightning-spinner>
+      </div>
+    </template>
+
+    <template if:true={hasError}>
+      <div class="slds-text-color_error slds-text-align_center">
+        ❌ Erro ao carregar os jobs do CRMA.
+      </div>
+    </template>
+  </div>
+</template>
