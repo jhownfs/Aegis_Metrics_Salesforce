@@ -10,7 +10,6 @@
 		<members>AegisMetricsSch</members>
 		<members>AegisMetricsSchemaGenerator</members>
 		<members>AegisMetricsServices</members>
-		<members>AegisSchemaGenerator</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
@@ -119,5 +118,9 @@
 		<members>AegisMetrics</members>
 		<name>WaveApplication</name>
 	</types>
-	<version>63.0</version>
+	<types>
+		<members>Topology_etlDataFlow</members>
+		<name>WaveDataflow</name>
+	</types>
+	<version>64.0</version>
 </Package>
