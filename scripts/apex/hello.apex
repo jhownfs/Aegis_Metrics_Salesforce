@@ -52,3 +52,6 @@ System.debug('schemaGenerator: ' + blob.valueOf(formatgenerated));*/
 
 //System.enqueueJob(new AegisMetricsQueuebleSlave(eventLogFiles[0]));
 
+
+Database.executeBatch(new AegisMetricsBtchAssets());
+

@@ -18,9 +18,13 @@
     <setupExperience>service</setupExperience>
     <tabs>Welcome</tabs>
     <tabs>Setup</tabs>
+    <tabs>Ativo_Tecnologico__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Aegis_Metrics_UtilityBar</utilityBar>
     <workspaceConfig>
+        <mappings>
+            <tab>Ativo_Tecnologico__c</tab>
+        </mappings>
         <mappings>
             <tab>Setup</tab>
         </mappings>
